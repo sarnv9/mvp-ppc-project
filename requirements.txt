@@ -1,5 +1,27 @@
+# --- Main Framework ---
+streamlit
+
+# --- Data Analysis ---
 pandas
 numpy
-scikit-learn
+scipy
+
+# --- Visualization ---
+plotly
+matplotlib
+
+# --- Database ---
+sqlalchemy
+psycopg2-binary
+
+# --- AI and Agents ---
+langchain
+langchain-community
+langchain-openai
+openai
+
+# --- Utilities and Server ---
+python-dotenv
 fastapi
 uvicorn
+scikit-learn
