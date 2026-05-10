@@ -150,11 +150,6 @@ C_AMBER  = "#C07B20"
 C_MUTED  = "#8A8680"
 
 # ─── Header ─────────────────────────────────────────────────────────────────────
-# st.markdown("""<div style="display:flex; align-items:baseline; gap:12px; margin-bottom:0.25rem;">
-#   <span style="font-size:28px; font-weight:600; color:#1A1917; letter-spacing:-0.03em;">PPC Ads AI Advisor</span>
-#   <span style="font-size:13px; color:#8A8680; font-weight:400;">Campaign intelligence dashboard</span>
-# </div>
-# """, unsafe_allow_html=True)
  
 st.markdown("<div style='margin-bottom:1.5rem'></div>", unsafe_allow_html=True)
 
@@ -211,28 +206,7 @@ if google_df is not None or meta_df is not None:
 
     st.divider()
     st.markdown("### Key metrics")
-    #st.subheader("KPI Summary")
 
-    # total_impressions = int(df["impressions"].sum())
-    # total_clicks      = int(df["clicks"].sum())
-    # total_conversions = int(df["conversions"].sum())
-    # total_cost        = float(df["cost"].sum())
-    # total_revenue     = float(df["revenue"].sum())
-    # avg_roi           = float(df["roi"].mean())
-    # avg_ctr           = float(df["ctr"].mean())
-    # avg_cpl           = float(df["cpl"].mean())
-
-    # col1, col2, col3, col4 = st.columns(4)
-    # col1.metric("Impressions",  f"{total_impressions:,}")
-    # col2.metric("Clicks",       f"{total_clicks:,}")
-    # col3.metric("Conversions",  f"{total_conversions:,}")
-    # col4.metric("Cost",         f"${total_cost:,.2f}")
-
-    # col5, col6, col7, col8 = st.columns(4)
-    # col5.metric("Revenue", f"${total_revenue:,.2f}")
-    # col6.metric("ROI",     f"{avg_roi:.1f}%")
-    # col7.metric("CTR",     f"{avg_ctr:.2f}%")
-    # col8.metric("CPL",     f"${avg_cpl:.2f}")
     # ── compute values ───────────────────────────────────────────────────────────
     total_cost        = float(df["cost"].sum())
     total_revenue     = float(df["revenue"].sum())
@@ -445,21 +419,6 @@ with col_quad:
     fig_quad.update_layout(**PLOT_LAYOUT, height=420)
     st.plotly_chart(fig_quad, width='content')
     st.caption("Bubble size = conversions · Top-right = scale up · Bottom-left = pause or test")
-    
-    # st.divider()
-
-    # if st.button("🤖 Generate AI Recommendations"):
-    #     with st.spinner("Analyzing campaigns..."):
-    #         explanations = generate_all_explanations(result)
-    #         st.session_state.explanations = explanations
-    #         st.success("AI recommendations generated!")
-
-    # if "explanations" in st.session_state:
-    #     st.subheader("🤖 AI Recommendations")
-    #     for exp in st.session_state.explanations:
-    #         with st.expander(f"📊 {exp['campaign']}"):
-    #             st.write(f"**Why:** {exp['why']}")
-    #             st.write(f"**Next Steps:** {exp['next_steps']}")
 
 # ════════════════════════════════════════════════════════════════════════════════
 # ASK THE DASHBOARD 

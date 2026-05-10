@@ -91,7 +91,7 @@ def upload_to_sql(df: pd.DataFrame):
     try:
         init_db()
         # This operation requires DROP/CREATE permissions
-        df.to_sql('performance_metrics', con=admin_engine, if_exists='replace', index=False)
+        df.to_sql('performance_metrics', con=engine, if_exists='replace', index=False)
         return True
     except Exception as e:
         # If this fails with "permission denied", it means you are using the wrong user
