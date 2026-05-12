@@ -27,7 +27,7 @@ Frontend: Streamlit & Plotly
 ├── .env.example             # Template for environment variables
 ├── requirements.txt         # Project dependencies
 ├── streamlit_app            # Streamlit interface and visualizations
-
+```
 ## Setup and Installation
 Prerequisites
 Python 3.11+
