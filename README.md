@@ -1,10 +1,10 @@
-PPC Ads AI Advisor: Agentic Decision Support System
+# PPC Ads AI Advisor: Agentic Decision Support System
 This repository contains the source code for the PPC Ads AI Advisor, an Agentic AI system designed to transform raw marketing data into strategic business intelligence using the ReAct (Reason + Act) framework.
 
-1. Project Overview
+## Project Overview
 This tool automates the analysis of Google and Meta Ads campaigns. It utilizes a Text-to-SQL engine to interact with a PostgreSQL database, providing deterministic visualizations and high-level strategic recommendations.
 
-2. Tech Stack
+## Tech Stack
 Language: Python 3.11
 
 Orchestration: LangChain (ReAct Agent)
@@ -15,8 +15,8 @@ Database: PostgreSQL (with SQLAlchemy ORM)
 
 Frontend: Streamlit & Plotly
 
-3. Project Structure
-
+## Project Structure
+```text
 ├── api
 │   ├── database/            # SQLAlchemy models and DB connection
 ├── src/
@@ -28,7 +28,7 @@ Frontend: Streamlit & Plotly
 ├── requirements.txt         # Project dependencies
 ├── streamlit_app            # Streamlit interface and visualizations
 
-4. Setup and Installation
+## Setup and Installation
 Prerequisites
 Python 3.11+
 
@@ -49,12 +49,12 @@ Install dependencies:
 pip install -r requirements.txt
 
 
-5. Usage
+## Usage
 To launch the dashboard and the AI Agent:
 
 streamlit run main.py
 
-6. Evaluation Framework
+## Evaluation Framework
 This project was evaluated using the Marketing Agent Benchmark (MAB) across five dimensions:
 
 Task Completion
