@@ -21,39 +21,13 @@ def run_analysis(df: pd.DataFrame) -> dict:
     top_cpl = df.sort_values("cpl").head(3).copy()
     top_cvr = df.sort_values("cvr", ascending=False).head(3).copy()
 
-    numeric = df.select_dtypes(include="number")
-    corr_matrix = numeric.corr()
-
-    platform_stats = df.groupby("platform").agg({"cost": "sum", "conversions": "sum"})
-    platform_stats["cpa"] = platform_stats["cost"] / platform_stats["conversions"].replace(0, np.nan)
-    platform_stats["cpa"] = platform_stats["cpa"].fillna(0)
-
-    if {"google", "meta"}.issubset(platform_stats.index):
-        g_cpa = platform_stats.loc["google", "cpa"]
-        m_cpa = platform_stats.loc["meta", "cpa"]
-
-        if g_cpa < m_cpa:
-            diff = ((m_cpa - g_cpa) / m_cpa) * 100 if m_cpa != 0 else 0
-            advice_text = f"Google is more efficient. Shift budget to Google; its CPA is {round(diff, 1)}% lower than Meta."
-        else:
-            diff = ((g_cpa - m_cpa) / g_cpa) * 100 if g_cpa != 0 else 0
-            advice_text = f"Meta is more efficient. Shift budget to Meta; its CPA is {round(diff, 1)}% lower than Google."
-        advice_type = "success"
-    else:
-        advice_text = "Insufficient data for cross-platform comparison."
-        advice_type = "warning"
 
     return {
         "df": df,
         "top_roi": top_roi,
         "bottom_roi": bottom_roi,
         "top_cpl": top_cpl,
-        "top_cvr": top_cvr,
-        "corr_matrix": corr_matrix,
-        "platform_stats": platform_stats,
-        "strategic_advice": advice_text,
-        "advice_type": advice_type,
-        "advice_text": advice_text,
+        "top_cvr": top_cvr
     }
 
 
