@@ -1,5 +1,5 @@
 import pandas as pd
-from app.database import engine, init_db
+from app.database import admin_engine
 import numpy as np
 
 def run_analysis(df: pd.DataFrame) -> dict:
@@ -8,22 +8,33 @@ def run_analysis(df: pd.DataFrame) -> dict:
 
     df = df.copy()
 
-    df["cvr"]  = calculate_cvr(df["conversions"], df["clicks"])
-    df["cpl"]  = calculate_cpl(df["conversions"], df["cost"])
-    df["roi"]  = calculate_roi(df["revenue"], df["cost"])
-    df["cpc"]  = calculate_cpc(df["cost"], df["clicks"])
-    df["roas"] = calculate_roas(df["revenue"], df["cost"])
-    df["ctr"]  = calculate_ctr(df["clicks"], df["impressions"])
-    df = df.round({"roi": 2, "cvr": 2, "cpl": 2, "cpc": 2, "roas": 2, "ctr": 2})
+    df_grouped = df.groupby(["campaign", "platform"]).agg({
+        "cost": "sum",
+        "revenue": "sum",
+        "conversions": "sum",
+        "clicks": "sum",
+        "impressions": "sum"
+    }).reset_index()
 
-    top_roi = df.sort_values("roi", ascending=False).head(3).copy()
-    bottom_roi = df.sort_values("roi", ascending=True).head(3).copy()
-    top_cpl = df.sort_values("cpl").head(3).copy()
-    top_cvr = df.sort_values("cvr", ascending=False).head(3).copy()
 
+    df_grouped["roi"]   = calculate_roi(df_grouped["revenue"], df_grouped["cost"])
+    df_grouped["roas"]  = calculate_roas(df_grouped["revenue"], df_grouped["cost"])
+    df_grouped["cvr"]   = calculate_cvr(df_grouped["conversions"], df_grouped["clicks"])
+    df_grouped["cpl"]   = calculate_cpl(df_grouped["conversions"], df_grouped["cost"]) # CPL es igual a CPA
+    df_grouped["cpc"]   = calculate_cpc(df_grouped["cost"], df_grouped["clicks"])
+    df_grouped["ctr"]   = calculate_ctr(df_grouped["clicks"], df_grouped["impressions"])
+
+
+    df_grouped = df_grouped.round(2)
+
+
+    top_roi = df_grouped.sort_values("roi", ascending=False).head(3).copy()
+    bottom_roi = df_grouped.sort_values("roi", ascending=True).head(3).copy()
+    top_cpl = df_grouped.sort_values("cpl").head(3).copy()
+    top_cvr = df_grouped.sort_values("cvr", ascending=False).head(3).copy()
 
     return {
-        "df": df,
+        "df": df_grouped, 
         "top_roi": top_roi,
         "bottom_roi": bottom_roi,
         "top_cpl": top_cpl,
@@ -54,20 +65,16 @@ def calculate_cpa(cost, conversions):
 
 
 
+
 def upload_to_sql(df: pd.DataFrame):
-    """
-    Toma el DataFrame resultante de run_analysis y lo persiste en PostgreSQL.
-    """
     if df is None or df.empty:
-        print("El DataFrame está vacío. No se subirá nada a la DB.")
         return False
 
     try:
-        init_db()
-        # This operation requires DROP/CREATE permissions
-        df.to_sql('performance_metrics', con=engine, if_exists='replace', index=False)
+
+        df.to_sql('performance_metrics', con=admin_engine, if_exists='replace', index=False)
+        print("✅ Data successfully uploaded using Administrator privileges.")
         return True
     except Exception as e:
-        # If this fails with "permission denied", it means you are using the wrong user
-        print(f"❌ Error: {e}")
+        print(f"❌ Critical Error during upload: {e}")
         return False

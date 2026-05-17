@@ -15,14 +15,14 @@ def harmonize_data(google_df=None, meta_df=None):
     }
 
     meta_columns = {
-        'campaign': 'campaign',
-        'cost': 'cost',
-        'clicks': 'clicks',     
-       'impressions': 'impressions',
-        'conversions': 'conversions',
-        'revenue': 'revenue',   
-       } 
-
+        'Campaign name': 'campaign',
+        'Amount spent (EUR)': 'cost',
+        'Link clicks': 'clicks',     
+        'Impressions': 'impressions',
+        'Results': 'conversions',
+        'Revenue': 'revenue',
+        'Reporting starts': 'date'
+    }
     if google_df is not None:
         google_df = google_df.copy()
         google_df["platform"] = "google"

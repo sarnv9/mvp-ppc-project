@@ -1,101 +1,101 @@
-campaign_id,campaign,channel,placement,device,impressions,clicks,conversions,cost,revenue,date
-1,Awareness-Video,meta,audience_network,tablet,326054,15697,161,635.01,6666.62,10/1/2025
-2,Lead-Gen-Form,meta,audience_network,tablet,574339,5145,96,732.93,1425.19,12/1/2025
-3,Lookalike-Purchasers,meta,audience_network,tablet,424504,13998,54,6222.39,15533.88,7/3/2025
-4,Awareness-Video,meta,stories,mobile,591915,13417,183,4980.29,16819.88,11/29/2025
-5,Lookalike-Purchasers,meta,reels,mobile,423633,15821,6,2873.26,18022.28,9/14/2025
-6,Lookalike-Purchasers,meta,feed,mobile,14320,6518,161,2364.54,13705.95,6/18/2025
-7,Engagement-Post,meta,stories,desktop,472474,5927,112,2391.52,1658.58,2/18/2026
-8,Retargeting-Website,meta,stories,desktop,442385,14060,186,7649.01,14317.48,6/13/2025
-9,Lead-Gen-Form,meta,feed,desktop,375803,4396,97,4174.02,11120.61,6/12/2025
-10,Lookalike-Purchasers,meta,stories,mobile,237539,2253,134,1334.05,18627.72,1/11/2026
-11,Engagement-Post,meta,stories,tablet,520392,12223,172,8236.21,13616.88,2/8/2026
-12,Engagement-Post,meta,stories,desktop,131311,19119,87,9730.07,16045.89,8/24/2025
-13,Awareness-Video,meta,feed,tablet,85440,4400,32,6029.89,7745.17,6/8/2025
-14,Awareness-Video,meta,audience_network,desktop,86253,18488,159,6356.59,14690.79,9/8/2025
-15,Engagement-Post,meta,audience_network,mobile,599819,11489,13,2633.26,7521.15,4/10/2025
-16,Awareness-Video,meta,reels,desktop,783930,12492,129,9521.03,9577.01,6/26/2025
-17,Lead-Gen-Form,meta,audience_network,mobile,448152,11521,99,5279.91,10576.0,4/28/2025
-18,Conversion-Catalog,meta,feed,tablet,269353,6255,186,8081.75,14721.52,1/7/2026
-19,Engagement-Post,meta,stories,desktop,384950,3056,46,9711.5,17020.64,12/17/2025
-20,Retargeting-Website,meta,reels,mobile,776319,11395,33,9181.08,3385.36,2/19/2025
-21,Retargeting-Website,meta,stories,desktop,665270,2452,127,2073.19,2578.33,2/16/2026
-22,Conversion-Catalog,meta,reels,mobile,268450,15133,188,6272.6,19396.97,9/12/2025
-23,Lead-Gen-Form,meta,audience_network,tablet,679400,3511,33,2093.18,14217.47,6/16/2025
-24,Conversion-Catalog,meta,audience_network,mobile,156035,18026,69,9728.91,8188.1,3/15/2025
-25,Lead-Gen-Form,meta,feed,mobile,705820,9874,80,2486.53,19770.86,11/10/2025
-26,Retargeting-Website,meta,feed,tablet,589659,6209,157,342.04,10573.62,5/23/2025
-27,Conversion-Catalog,meta,stories,tablet,398749,18233,164,6406.81,1134.11,6/10/2025
-28,Awareness-Video,meta,reels,tablet,591910,17727,70,7845.49,9732.52,12/6/2025
-29,Lead-Gen-Form,meta,reels,desktop,759734,5324,190,9270.3,9615.74,10/6/2025
-30,Lookalike-Purchasers,meta,stories,tablet,371166,17268,200,9152.19,12318.25,3/24/2025
-31,Lead-Gen-Form,meta,audience_network,desktop,298705,18767,85,6673.24,7421.44,4/24/2025
-32,Awareness-Video,meta,stories,tablet,617380,841,29,6770.47,2924.76,4/19/2025
-33,Lookalike-Purchasers,meta,feed,tablet,20326,17636,126,9845.32,4752.42,11/11/2025
-34,Lookalike-Purchasers,meta,reels,tablet,286317,2303,45,4162.97,12007.0,11/11/2025
-35,Conversion-Catalog,meta,audience_network,tablet,557545,19344,37,9937.0,1684.34,5/12/2025
-36,Retargeting-Website,meta,reels,mobile,775220,4580,15,1088.27,6355.49,4/21/2025
-37,Retargeting-Website,meta,feed,mobile,626789,18625,29,3365.05,15873.33,4/17/2025
-38,Conversion-Catalog,meta,reels,desktop,39693,8658,184,8988.7,5086.07,4/21/2025
-39,Conversion-Catalog,meta,audience_network,desktop,222720,7453,99,181.66,13332.83,9/20/2025
-40,Lookalike-Purchasers,meta,feed,tablet,36170,11913,99,2440.14,18702.56,3/17/2025
-41,Engagement-Post,meta,reels,desktop,688592,4342,76,3772.23,3311.66,1/17/2026
-42,Lead-Gen-Form,meta,stories,mobile,327752,5774,152,7913.58,12987.46,1/28/2026
-43,Engagement-Post,meta,audience_network,tablet,722976,15223,19,8233.51,9544.2,7/2/2025
-44,Lead-Gen-Form,meta,audience_network,mobile,434046,3382,71,1335.18,10885.98,6/21/2025
-45,Engagement-Post,meta,feed,mobile,95665,14138,62,251.64,1256.45,7/31/2025
-46,Engagement-Post,meta,stories,desktop,108571,10696,168,2105.77,3450.8,7/8/2025
-47,Awareness-Video,meta,audience_network,tablet,598468,17811,171,556.37,448.49,3/5/2025
-48,Retargeting-Website,meta,feed,mobile,662899,14559,101,1408.65,1276.87,5/17/2025
-49,Conversion-Catalog,meta,reels,mobile,610673,5230,187,2979.97,16111.16,4/20/2025
-50,Retargeting-Website,meta,feed,desktop,534756,11317,3,8206.81,15132.54,1/8/2026
-51,Retargeting-Website,meta,stories,desktop,708400,5681,180,5918.71,2396.07,3/22/2025
-52,Awareness-Video,meta,audience_network,mobile,62508,16620,30,3344.64,10549.6,6/27/2025
-53,Awareness-Video,meta,audience_network,tablet,39117,11948,69,1320.07,5154.25,10/24/2025
-54,Engagement-Post,meta,audience_network,desktop,758405,9732,145,7410.38,17832.33,6/5/2025
-55,Conversion-Catalog,meta,feed,mobile,709920,8140,45,3314.49,17170.03,8/19/2025
-56,Conversion-Catalog,meta,feed,desktop,118754,6500,161,4092.99,12511.69,8/3/2025
-57,Conversion-Catalog,meta,audience_network,tablet,770315,5180,192,1531.28,15131.71,1/26/2026
-58,Conversion-Catalog,meta,audience_network,desktop,96030,8024,155,6604.48,4752.79,12/14/2025
-59,Awareness-Video,meta,audience_network,desktop,93462,5809,46,6551.17,11511.58,11/24/2025
-60,Awareness-Video,meta,feed,desktop,173212,11559,175,2623.81,1976.32,11/10/2025
-61,Engagement-Post,meta,feed,tablet,171115,6592,124,7492.65,3108.29,1/31/2026
-62,Conversion-Catalog,meta,stories,tablet,71036,4991,4,6942.85,251.94,2/23/2025
-63,Lead-Gen-Form,meta,audience_network,tablet,302603,15499,23,5151.47,9306.01,2/6/2025
-64,Engagement-Post,meta,audience_network,desktop,653721,9249,122,6236.83,12377.59,3/8/2025
-65,Lookalike-Purchasers,meta,reels,tablet,615927,18430,151,3223.52,9468.89,12/16/2025
-66,Conversion-Catalog,meta,feed,desktop,731313,2290,96,3667.49,9021.58,5/13/2025
-67,Engagement-Post,meta,audience_network,desktop,791550,13321,104,448.96,7719.24,7/25/2025
-68,Retargeting-Website,meta,reels,mobile,468967,684,23,1266.21,16991.37,3/19/2025
-69,Lead-Gen-Form,meta,stories,tablet,203189,19433,123,7434.5,3997.0,4/15/2025
-70,Lookalike-Purchasers,meta,stories,mobile,61271,14777,189,7424.87,7177.82,9/17/2025
-71,Lookalike-Purchasers,meta,audience_network,tablet,712569,19194,32,6878.34,10502.83,2/12/2025
-72,Retargeting-Website,meta,audience_network,desktop,769841,18419,197,8116.25,2364.41,10/3/2025
-73,Retargeting-Website,meta,reels,desktop,534696,10497,105,3052.83,6464.2,7/8/2025
-74,Awareness-Video,meta,audience_network,mobile,535687,16638,56,6492.25,2623.45,4/14/2025
-75,Lookalike-Purchasers,meta,stories,mobile,11030,6071,130,4111.27,15280.21,7/28/2025
-76,Conversion-Catalog,meta,stories,mobile,345891,1479,103,6686.02,13080.94,5/4/2025
-77,Retargeting-Website,meta,reels,tablet,121314,9326,110,3680.07,13593.3,7/28/2025
-78,Retargeting-Website,meta,stories,mobile,547421,4365,177,7011.94,11612.92,4/14/2025
-79,Conversion-Catalog,meta,stories,mobile,455455,17266,114,737.85,17892.4,6/9/2025
-80,Awareness-Video,meta,feed,desktop,216227,17813,190,286.05,13551.45,7/10/2025
-81,Lookalike-Purchasers,meta,reels,tablet,611125,17772,28,9182.03,10901.84,2/28/2025
-82,Lead-Gen-Form,meta,stories,tablet,408839,11753,39,8054.82,11087.31,11/4/2025
-83,Conversion-Catalog,meta,audience_network,desktop,412702,17633,128,6296.96,11548.39,2/11/2026
-84,Conversion-Catalog,meta,stories,tablet,567186,12479,111,9902.53,18691.96,1/24/2026
-85,Engagement-Post,meta,feed,mobile,612709,17095,192,5450.32,14190.0,1/19/2026
-86,Lookalike-Purchasers,meta,stories,mobile,724144,18849,22,4309.45,14367.43,12/30/2025
-87,Lookalike-Purchasers,meta,feed,tablet,96988,17863,75,4590.91,7491.68,10/17/2025
-88,Awareness-Video,meta,reels,desktop,327478,18471,126,5655.21,582.4,2/22/2026
-89,Retargeting-Website,meta,feed,mobile,653077,16716,170,6246.44,5645.83,7/18/2025
-90,Conversion-Catalog,meta,audience_network,tablet,373012,1458,80,9384.83,18837.1,7/12/2025
-91,Awareness-Video,meta,reels,tablet,713037,11593,12,979.5,7066.92,10/3/2025
-92,Engagement-Post,meta,feed,mobile,64683,8837,191,8827.77,2422.79,4/29/2025
-93,Awareness-Video,meta,feed,tablet,397551,9532,16,7431.7,11165.45,5/21/2025
-94,Engagement-Post,meta,stories,mobile,747163,516,124,3752.94,5766.29,6/29/2025
-95,Retargeting-Website,meta,reels,mobile,325608,13689,43,1004.39,5317.61,5/1/2025
-96,Retargeting-Website,meta,stories,mobile,547800,7691,96,1710.27,18742.66,5/7/2025
-97,Retargeting-Website,meta,audience_network,mobile,636663,5406,3,6270.82,17291.97,2/10/2025
-98,Engagement-Post,meta,reels,mobile,627385,894,189,9931.52,7704.29,8/26/2025
-99,Lead-Gen-Form,meta,reels,tablet,249392,5772,157,4813.17,11263.51,7/11/2025
-100,Awareness-Video,meta,feed,mobile,160534,8656,153,795.64,9679.9,4/25/2025
+Campaign ID ,Campaign name,Channel,Device,Impressions,Link clicks,Results,Amount spent (EUR),Revenue,Reporting starts
+101,LeadGen-HomeDecor,Meta Ads,Mobile,494395,5525,263,5707.32,21040.0,2026-04-13
+102,Catalog-Dynamic,Meta Ads,Mobile,295507,3161,102,1641.16,8160.0,2026-01-19
+103,Retargeting-Visitors,Meta Ads,Desktop,321974,5470,180,4678.85,14400.0,2026-01-16
+104,Prospecting-Interest,Meta Ads,Desktop,152735,2139,57,1700.58,4560.0,2026-01-06
+105,Messenger-Retargeting,Meta Ads,Desktop,326519,3593,70,1699.71,5600.0,2026-04-18
+106,Reels-Awareness,Meta Ads,Mobile,410954,6603,147,4064.87,11760.0,2026-04-07
+107,Instagram-Stories,Meta Ads,Desktop,490285,5559,281,6657.22,22480.0,2026-04-15
+108,Retargeting-Cart,Meta Ads,Desktop,192431,2482,55,1630.29,4400.0,2026-01-21
+109,Messenger-Retargeting,Meta Ads,Desktop,161109,2570,93,1851.33,7440.0,2026-01-05
+110,Prospecting-Broad,Meta Ads,Desktop,179488,1686,91,1716.41,7280.0,2026-04-16
+111,LeadGen-HomeDecor,Meta Ads,Desktop,226660,1961,13,1597.73,1040.0,2026-03-05
+112,Retargeting-Social,Meta Ads,Mobile,150014,2189,106,2500.14,8480.0,2026-03-31
+113,Retargeting-Social,Meta Ads,Mobile,382130,3783,143,3180.26,11440.0,2026-01-12
+114,Retargeting-Cart,Meta Ads,Desktop,71586,1129,32,590.67,2560.0,2026-02-07
+115,Prospecting-Interest,Meta Ads,Desktop,447635,6173,205,4801.21,16400.0,2026-01-19
+116,Reels-Awareness,Meta Ads,Mobile,462998,4092,219,4166.23,17520.0,2026-02-13
+117,Instagram-Stories,Meta Ads,Desktop,440204,3535,172,3467.27,13760.0,2026-03-16
+118,Catalog-Cross-Sell,Meta Ads,Mobile,244119,3531,19,2387.31,1520.0,2026-03-11
+119,Prospecting-Broad,Meta Ads,Mobile,375690,4082,152,2883.43,12160.0,2026-02-22
+120,Messenger-Retargeting,Meta Ads,Desktop,379742,7200,284,5075.89,22720.0,2026-04-12
+121,Retargeting-Visitors,Meta Ads,Desktop,29408,280,12,328.24,960.0,2026-01-13
+122,Catalog-Cross-Sell,Meta Ads,Mobile,285749,5408,84,2229.6,6720.0,2026-04-22
+123,Retargeting-Visitors,Meta Ads,Mobile,256148,4451,128,2724.09,10240.0,2026-02-20
+124,Prospecting-Broad,Meta Ads,Desktop,176021,2732,132,3032.39,10560.0,2026-03-11
+125,Retargeting-Cart,Meta Ads,Mobile,340910,5527,129,3481.48,10320.0,2026-01-12
+126,Retargeting-Cart,Meta Ads,Mobile,242615,2425,50,1550.96,4000.0,2026-02-11
+127,Prospecting-Interest,Meta Ads,Desktop,206524,2720,81,1619.37,6480.0,2026-03-29
+128,Retargeting-Visitors,Meta Ads,Mobile,51402,787,21,555.65,1680.0,2026-03-05
+129,Retargeting-Visitors,Meta Ads,Mobile,251775,3942,124,3026.1,9920.0,2026-04-26
+130,Prospecting-Interest,Meta Ads,Mobile,48724,648,21,438.34,1680.0,2026-03-23
+131,Messenger-Retargeting,Meta Ads,Desktop,249513,4527,113,2532.28,9040.0,2026-03-03
+132,Catalog-Dynamic,Meta Ads,Desktop,311366,3596,180,3450.09,14400.0,2026-04-17
+133,Prospecting-Interest,Meta Ads,Mobile,306709,5638,321,5765.7,25680.0,2026-04-27
+134,Catalog-Cross-Sell,Meta Ads,Desktop,416711,7328,260,6490.06,20800.0,2026-03-23
+135,Prospecting-Interest,Meta Ads,Mobile,339382,3111,90,2806.02,7200.0,2026-04-11
+136,Reels-Awareness,Meta Ads,Desktop,393967,3773,168,4254.82,13440.0,2026-02-23
+137,Retargeting-Visitors,Meta Ads,Desktop,288319,4043,88,2498.66,7040.0,2026-04-27
+138,Catalog-Cross-Sell,Meta Ads,Desktop,401412,7404,423,7725.23,33840.0,2026-01-10
+139,Prospecting-Lookalike,Meta Ads,Desktop,453413,8005,283,5544.42,22640.0,2026-01-02
+140,Retargeting-Cart,Meta Ads,Desktop,203245,3267,141,3064.03,11280.0,2026-04-16
+141,Prospecting-Broad,Meta Ads,Mobile,363808,3931,88,1651.1,7040.0,2026-03-13
+142,Reels-Awareness,Meta Ads,Mobile,349556,3062,175,3242.92,14000.0,2026-02-08
+143,Retargeting-Cart,Meta Ads,Mobile,33774,654,18,420.84,1440.0,2026-01-13
+144,Instagram-Stories,Meta Ads,Mobile,213762,2874,134,2691.18,10720.0,2026-03-11
+145,Messenger-Retargeting,Meta Ads,Mobile,474211,6155,128,2949.58,10240.0,2026-02-22
+146,Prospecting-Interest,Meta Ads,Mobile,371905,4629,152,3493.54,12160.0,2026-04-20
+147,LeadGen-HomeDecor,Meta Ads,Desktop,295456,5561,167,5093.11,13360.0,2026-02-05
+148,Retargeting-Cart,Meta Ads,Desktop,58063,926,39,845.77,3120.0,2026-01-03
+149,Prospecting-Broad,Meta Ads,Mobile,76020,1326,39,748.08,3120.0,2026-03-12
+150,Prospecting-Lookalike,Meta Ads,Mobile,182259,3152,150,3249.44,12000.0,2026-02-05
+151,Retargeting-Visitors,Meta Ads,Mobile,293228,3228,73,1741.82,5840.0,2026-01-04
+152,Prospecting-Broad,Meta Ads,Mobile,318728,3788,67,2043.24,5360.0,2026-04-05
+153,Retargeting-Cart,Meta Ads,Mobile,259690,3474,110,2395.78,8800.0,2026-02-27
+154,Reels-Awareness,Meta Ads,Mobile,391284,6808,330,7445.12,26400.0,2026-02-28
+155,Retargeting-Social,Meta Ads,Mobile,261124,4744,188,3515.39,15040.0,2026-04-02
+156,Retargeting-Cart,Meta Ads,Mobile,178879,2737,58,1238.62,4640.0,2026-03-23
+157,Messenger-Retargeting,Meta Ads,Desktop,209703,4181,147,3447.01,11760.0,2026-03-19
+158,Messenger-Retargeting,Meta Ads,Mobile,457108,7248,360,7988.49,28800.0,2026-04-21
+159,Catalog-Cross-Sell,Meta Ads,Mobile,226957,2739,87,2089.31,6960.0,2026-01-13
+160,Prospecting-Broad,Meta Ads,Desktop,206241,4010,164,3807.32,13120.0,2026-01-12
+161,Retargeting-Cart,Meta Ads,Desktop,60627,1027,26,716.97,2080.0,2026-01-08
+162,Instagram-Stories,Meta Ads,Desktop,361279,3420,112,2335.44,8960.0,2026-04-07
+163,Messenger-Retargeting,Meta Ads,Mobile,160800,2445,76,1665.82,6080.0,2026-01-28
+164,Catalog-Cross-Sell,Meta Ads,Mobile,454216,4224,184,4546.29,14720.0,2026-04-08
+165,Prospecting-Lookalike,Meta Ads,Desktop,453104,6675,317,6768.09,25360.0,2026-03-28
+166,Retargeting-Social,Meta Ads,Desktop,25179,256,10,246.31,800.0,2026-02-13
+167,Retargeting-Visitors,Meta Ads,Mobile,306915,4876,111,2221.84,8880.0,2026-01-04
+168,Instagram-Stories,Meta Ads,Mobile,207234,2702,74,1817.68,5920.0,2026-04-03
+169,Reels-Awareness,Meta Ads,Mobile,473125,4084,100,2147.89,8000.0,2026-03-28
+170,Catalog-Cross-Sell,Meta Ads,Desktop,264626,4045,108,2958.3,8640.0,2026-03-07
+171,Catalog-Dynamic,Meta Ads,Mobile,158502,2558,99,2236.99,7920.0,2026-02-09
+172,Catalog-Dynamic,Meta Ads,Mobile,14030,147,9,169.97,720.0,2026-04-08
+173,Prospecting-Broad,Meta Ads,Mobile,14052,196,5,145.93,400.0,2026-03-10
+174,Instagram-Stories,Meta Ads,Desktop,47788,610,33,606.12,2640.0,2026-02-28
+175,Prospecting-Broad,Meta Ads,Desktop,310626,3992,148,3641.16,11840.0,2026-02-21
+176,Prospecting-Broad,Meta Ads,Mobile,430123,8332,310,6399.62,24800.0,2026-02-16
+177,Retargeting-Cart,Meta Ads,Mobile,238419,3592,121,2942.46,9680.0,2026-02-09
+178,Prospecting-Lookalike,Meta Ads,Desktop,418482,4192,139,3388.76,11120.0,2026-03-07
+179,Prospecting-Broad,Meta Ads,Desktop,391356,7631,244,6992.7,19520.0,2026-01-14
+180,Prospecting-Lookalike,Meta Ads,Mobile,325830,3204,107,3227.46,8560.0,2026-04-09
+181,Catalog-Cross-Sell,Meta Ads,Desktop,367110,7008,281,5967.97,22480.0,2026-03-21
+182,LeadGen-HomeDecor,Meta Ads,Desktop,89145,1184,43,917.76,3440.0,2026-04-12
+183,Retargeting-Social,Meta Ads,Desktop,275990,2454,102,1888.09,8160.0,2026-02-17
+184,Retargeting-Cart,Meta Ads,Mobile,332441,5029,172,3558.45,13760.0,2026-04-12
+185,Retargeting-Social,Meta Ads,Desktop,486603,8622,375,7944.91,30000.0,2026-03-02
+186,Retargeting-Social,Meta Ads,Desktop,64264,1140,68,1219.69,5440.0,2026-01-11
+187,Retargeting-Visitors,Meta Ads,Mobile,139889,2307,122,2751.76,9760.0,2026-03-20
+188,Prospecting-Broad,Meta Ads,Desktop,213117,2750,85,1844.41,6800.0,2026-04-12
+189,Prospecting-Broad,Meta Ads,Mobile,182852,1670,60,1574.31,4800.0,2026-04-03
+190,Reels-Awareness,Meta Ads,Mobile,184777,1659,74,1544.35,5920.0,2026-02-09
+191,Messenger-Retargeting,Meta Ads,Desktop,77607,1175,71,1351.72,5680.0,2026-02-18
+192,Prospecting-Broad,Meta Ads,Mobile,361333,5938,386,6874.34,30880.0,2026-04-27
+193,LeadGen-HomeDecor,Meta Ads,Desktop,276594,3414,84,2355.93,6720.0,2026-01-28
+194,Catalog-Cross-Sell,Meta Ads,Mobile,128773,2575,52,1349.19,4160.0,2026-04-11
+195,Instagram-Stories,Meta Ads,Mobile,357041,4299,237,4355.09,18960.0,2026-02-18
+196,Retargeting-Visitors,Meta Ads,Mobile,388107,5143,180,3747.64,14400.0,2026-01-31
+197,Reels-Awareness,Meta Ads,Desktop,404469,6869,207,5214.55,16560.0,2026-02-09
+198,Catalog-Cross-Sell,Meta Ads,Mobile,202854,3274,154,2803.64,12320.0,2026-04-09
+199,Catalog-Dynamic,Meta Ads,Desktop,94965,1691,92,1760.34,7360.0,2026-02-02
+200,Catalog-Cross-Sell,Meta Ads,Desktop,300739,5778,247,5599.58,19760.0,2026-01-16

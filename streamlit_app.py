@@ -229,7 +229,7 @@ if google_df is not None or meta_df is not None:
 
     <div style="background:#fff;border:1px solid #E8E6E1;border-radius:12px;padding:1.25rem 1.5rem;">
         <div style="font-size:11px;color:#8A8680;font-weight:500;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px;">Total spend</div>
-        <div style="font-size:28px;font-weight:600;color:#1A1917;line-height:1.1;margin-bottom:8px;">${total_cost/1000:.0f}K</div>
+        <div style="font-size:28px;font-weight:600;color:#1A1917;line-height:1.1;margin-bottom:8px;">€{total_cost/1000:.0f}K</div>
         {delta_html("vs prev period")}
     </div>
 
@@ -290,21 +290,21 @@ fig_bar.add_trace(go.Bar(
     x=df_grouped["campaign"],
     y=df_grouped["cost"],
     marker_color=C_CORAL,
-    hovertemplate="<b>%{x}</b><br>Spend: $%{y:,.0f}<extra></extra>",
+    hovertemplate="<b>%{x}</b><br>Spend: €%{y:,.0f}<extra></extra>",
 ))
 fig_bar.add_trace(go.Bar(
     name="Revenue",
     x=df_grouped["campaign"],
     y=df_grouped["revenue"],
     marker_color=C_GREEN,
-    hovertemplate="<b>%{x}</b><br>Revenue: $%{y:,.0f}<extra></extra>",
+    hovertemplate="<b>%{x}</b><br>Revenue: €%{y:,.0f}<extra></extra>",
 ))
 fig_bar.update_layout(
     **PLOT_LAYOUT,
     barmode="group",
     height=380,
     xaxis_tickangle=-30,
-    yaxis_title="USD ($)",
+    yaxis_title="Euros (€)",
 )
 st.plotly_chart(fig_bar, width='stretch')
  
@@ -388,7 +388,7 @@ with col_quad:
         hover_name="campaign",
         text="campaign",
         log_x=True,
-        labels={"cost": "Spend ($)", "roi": "ROI (%)"},
+        labels={"cost": "Spend (€)", "roi": "ROI (%)"},
     )
     fig_quad.update_traces(
         textposition="top center",

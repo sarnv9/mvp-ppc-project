@@ -4,13 +4,20 @@ from sqlalchemy.orm import sessionmaker
 import os
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(override=True)
 
-URL_DATABASE = os.getenv("DATABASE_URL")
+#URL_DATABASE = os.getenv("DATABASE_URL")
+#engine = create_engine(URL_DATABASE)
 
-engine = create_engine(URL_DATABASE)
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+ADMIN_URL = os.getenv("ADMIN_DATABASE_URL")
+admin_engine = create_engine(ADMIN_URL)
+
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=admin_engine)
 Base = declarative_base()
+
+#def init_db():
+#    Base.metadata.create_all(bind=engine)
+
 
 class PerformanceMetric(Base):
     __tablename__ = 'performance_metrics'
@@ -31,5 +38,4 @@ class PerformanceMetric(Base):
     cpc = Column(Float)
 
 
-def init_db():
-    Base.metadata.create_all(bind=engine)
+#def init_db():       Base.metadata.create_all(bind=engine)
