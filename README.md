@@ -1,11 +1,11 @@
-# PPC Ads AI Advisor: Agentic Decision Support System
+# PPC Ads AI Advisor
 This repository contains the source code for the PPC Ads AI Advisor, an Agentic AI system designed to transform raw marketing data into strategic business intelligence using the ReAct (Reason + Act) framework.
 
 ## Project Overview
 This tool automates the analysis of Google and Meta Ads campaigns. It utilizes a Text-to-SQL engine to interact with a PostgreSQL database, providing deterministic visualizations and high-level strategic recommendations.
 
 ## Tech Stack
-Language: Python 3.11
+Language: Python 3.14
 
 Orchestration: LangChain (ReAct Agent)
 
