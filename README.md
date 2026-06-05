@@ -72,7 +72,7 @@ uvicorn app.api:app --reload
 
 Launch the Frontend (Streamlit)
 
-streamlit run main.py
+streamlit run streamlit_app.py
 
 ## Evaluation Framework
 This project was evaluated using the Marketing Agent Benchmark (MAB) across five dimensions:
