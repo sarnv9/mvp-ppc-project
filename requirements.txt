@@ -1,5 +1,5 @@
 # --- Main Framework ---
-streamlit==1.45.0
+streamlit==1.58.0
 
 # --- Data Analysis ---
 pandas==2.2.3
@@ -15,10 +15,11 @@ sqlalchemy==2.0.38
 psycopg2-binary==2.9.10
 
 # --- AI and Agents ---
-langchain==0.3.19
-langchain-community==0.3.18
-langchain-openai==0.3.7
-openai==1.63.0
+# Se actualizan a versiones con soporte nativo para NumPy 2.x
+langchain==0.3.29
+langchain-community==0.3.28
+langchain-openai==0.3.14
+openai==1.63.2
 
 # --- Utilities and Server ---
 python-dotenv==1.0.1
