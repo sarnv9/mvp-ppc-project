@@ -1,27 +1,27 @@
 # --- Main Framework ---
-streamlit
+streamlit==1.45.0
 
 # --- Data Analysis ---
-pandas
-numpy
-scipy
+pandas==2.2.3
+numpy==2.2.2
+scipy==1.15.2
 
 # --- Visualization ---
-plotly
-matplotlib
+plotly==6.0.0
+matplotlib==3.10.0
 
 # --- Database ---
-sqlalchemy
-psycopg2-binary
+sqlalchemy==2.0.38
+psycopg2-binary==2.9.10
 
 # --- AI and Agents ---
-langchain
-langchain-community
-langchain-openai
-openai
+langchain==0.3.19
+langchain-community==0.3.18
+langchain-openai==0.3.7
+openai==1.63.0
 
 # --- Utilities and Server ---
-python-dotenv
-fastapi
-uvicorn
-scikit-learn
+python-dotenv==1.0.1
+fastapi==0.115.8
+uvicorn==0.34.0
+scikit-learn==1.6.1

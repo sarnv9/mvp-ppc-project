@@ -5,40 +5,50 @@ def harmonize_data(google_df=None, meta_df=None):
     dfs = []
 
     google_columns = {
-
+        'campaign_id': 'campaign_id',
         'campaign': 'campaign',
-        'cost': 'cost', 
-        'clicks': 'clicks',
+        'channel': 'channel',
+        'device': 'device',
         'impressions': 'impressions',
+        'clicks': 'clicks',
         'conversions': 'conversions',
+        'cost': 'cost',
         'revenue': 'revenue',
+        'date': 'date'
     }
 
     meta_columns = {
-        'Campaign name': 'campaign',
-        'Amount spent (EUR)': 'cost',
-        'Link clicks': 'clicks',     
-        'Impressions': 'impressions',
-        'Results': 'conversions',
-        'Revenue': 'revenue',
-        'Reporting starts': 'date'
-    }
+    'campaign id': 'campaign_id', 
+    'campaign name': 'campaign',
+    'channel': 'channel',
+    'device': 'device',
+    'impressions': 'impressions',
+    'link clicks': 'clicks',
+    'results': 'conversions',
+    'amount spent (eur)': 'cost',
+    'revenue': 'revenue',
+    'reporting starts': 'date'
+}
+
     if google_df is not None:
-        google_df = google_df.copy()
-        google_df["platform"] = "google"
-        google_df = google_df.rename(columns=google_columns)
-        dfs.append(google_df)
+        g = google_df.copy()
+        g.columns = [str(c).strip().lower() for c in g.columns]
+        g["platform"] = "google"
+        g = g.rename(columns=google_columns)
+        dfs.append(g)
 
     if meta_df is not None:
-        meta_df = meta_df.copy()
-        meta_df["platform"] = "meta"
-        meta_df = meta_df.rename(columns=meta_columns)
-        dfs.append(meta_df)
+        m = meta_df.copy()
+        m.columns = [str(c).strip().lower() for c in m.columns]
+        m["platform"] = "meta"
+        m = m.rename(columns=meta_columns)
+        dfs.append(m)
 
     if not dfs:
         return pd.DataFrame()
 
     result = pd.concat(dfs, ignore_index=True)
+
     if "date" in result.columns:
         result["date"] = pd.to_datetime(result["date"], errors="coerce")
 

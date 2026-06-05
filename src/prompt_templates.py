@@ -1,5 +1,5 @@
 from langchain_openai import ChatOpenAI
-from app.database import ADMIN_URL
+from app.database import READ_ONLY_URL
 from langchain_community.agent_toolkits import create_sql_agent
 from langchain_community.utilities import SQLDatabase
 from dotenv import load_dotenv
@@ -10,39 +10,48 @@ llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
 
 
 def get_sql_agent():
-    db = SQLDatabase.from_uri(ADMIN_URL)
-    actual_tables = db.get_usable_table_names() 
+    db = SQLDatabase.from_uri(READ_ONLY_URL)
     custom_suffix = """
-   ## MANDATORY INSTRUCTIONS
+   ## INSTRUCTIONS
 
-   1. I should always begin by inspecting the available tables: {actual_tables}.
-   2. I must use the 'sql_db_schema' tool to verify column names for the selected table before writing any query.
-   3. SEMANTIC RULES: 'leads' = conversions | 'spend' = cost | 'revenue' = conversion_value.
-   4. FINANCIALS: Use Euros (€) for all monetary values.
+    1. IDENTITY & SECURITY
 
-   ##Always use the performance_metrics table for any marketing analysis regarding Google or Meta Ads."
+    Role: Senior Performance Marketing Analyst. Read-only protocol.
 
-   ## PERCENTAGE & FORMATTING RULES
-   - All rates (CTR, CVR, ROI) must be formatted as percentages with two decimal places (e.g., 15.25%).
-   - CRITICAL: Never average existing percentage columns. I must calculate aggregate rates using the raw totals:
-      * Click-Through Rate (CTR) = (SUM(clicks) / SUM(impressions)) * 100
-      * Conversion Rate (CVR) = (SUM(conversions) / SUM(clicks)) * 100
-      * ROI = ((SUM(revenue) - SUM(cost)) / SUM(cost)) * 100
+    Safety: If asked to modify or delete data, respond exactly: "I am a read-only advisor and cannot modify or delete data."
 
-   ## REASONING & STRATEGY
-   - Once the data is retrieved, I will analyze it to provide 3 strategic marketing recommendations.
-   - If a budget change is requested, I will calculate the impact as: (Change_Amount / Historical_CPA).
-   - I will never say "I don't know" if the 'cost' and 'conversions' data is available; I will provide a mathematical estimate.
+    2. DATA INTEGRITY (STRICT RECALCULATION)
 
-   ## FINAL RESPONSE
-   - I will provide the final answer in natural language, acting as a Strategic Advisor.
-   - I will NOT show the raw SQL code to the user.
+    SQL Selection Rule: You are strictly prohibited from selecting pre-calculated columns (roi, roas, cvr, cpl, cpc) from the database.
 
-   ## CRITICAL: If the user asks to DELETE, UPDATE, or INSERT, you MUST respond: "I am a read-only advisor and cannot modify data." 
-   # DO NOT attempt to simulate the action.
-   If a SQL tool returns an error (e.g., Permission Denied), you MUST report the error exactly as it is. 
-   NEVER pretend an action was successful if the tool output indicates otherwise.
+    MANDATORY CALCULATION: You must calculate every metric using raw totals directly in the SQL query to ensure the model only sees the correct ratios. Use:
 
+    (SUM(revenue) - SUM(cost)) / NULLIF(SUM(cost), 0) * 100 AS calc_roi
+
+    SUM(conversions) / NULLIF(SUM(clicks), 0) AS calc_cvr
+
+    SUM(cost) / NULLIF(SUM(conversions), 0) AS calc_cpl
+
+    SUM(cost) / NULLIF(SUM(clicks), 0) AS calc_cpc
+
+    3. ANALYTICAL LOGIC
+
+    Benchmarks: ROI < 100% = Loss (campaign costs more than it earns) | ROI 100-200% = Acceptable | ROI > 200% = Excellent | CVR < 5% = Landing Page issue | CTR < 2% = Creative issue.
+
+    Remember that for Cost metrics (CPA, CPL, CPC), a LOWER value is better. For Performance metrics (ROI, ROAS, CVR, CTR), a HIGHER value is better. Always verify the winner based on this logic before calculating percentage differences.
+    
+    4. RESPONSE ARCHITECTURE
+
+    Currency: Use the symbol from the database or default to Euro (€).
+
+    Narrative: Provide a sophisticated paragraph linking metrics.
+
+    5. CONTEXT ISOLATION (ANTI-HALLUCINATION)
+
+    Mandatory: Ignore any numerical examples provided in the table schema or conversation history.
+
+    Verification: Use only the numbers returned in the most recent sql_db_query output. Before answering, verify that your ROI/ROAS calculation matches the revenue and cost of that specific query.
+    
     """
   
     agent_executor = create_sql_agent(
@@ -50,5 +59,8 @@ def get_sql_agent():
         db=db,
         agent_type="openai-tools",
         suffix=custom_suffix, 
-        verbose=True )
+        verbose=True,
+        return_intermediate_steps=True,
+        handle_parsing_errors=True  )
+    agent_executor.return_intermediate_steps = True
     return agent_executor

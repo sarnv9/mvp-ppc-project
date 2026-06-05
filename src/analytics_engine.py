@@ -20,7 +20,7 @@ def run_analysis(df: pd.DataFrame) -> dict:
     df_grouped["roi"]   = calculate_roi(df_grouped["revenue"], df_grouped["cost"])
     df_grouped["roas"]  = calculate_roas(df_grouped["revenue"], df_grouped["cost"])
     df_grouped["cvr"]   = calculate_cvr(df_grouped["conversions"], df_grouped["clicks"])
-    df_grouped["cpl"]   = calculate_cpl(df_grouped["conversions"], df_grouped["cost"]) # CPL es igual a CPA
+    df_grouped["cpl"]   = calculate_cpl(df_grouped["conversions"], df_grouped["cost"]) 
     df_grouped["cpc"]   = calculate_cpc(df_grouped["cost"], df_grouped["clicks"])
     df_grouped["ctr"]   = calculate_ctr(df_grouped["clicks"], df_grouped["impressions"])
 
@@ -49,7 +49,7 @@ def calculate_cpl(conversions, cost):
     return cost / conversions
 
 def calculate_roi(revenue, cost):
-    return (revenue - cost) / cost * 100
+    return (revenue - cost) / cost 
 
 def calculate_cpc(cost, clicks):
     return cost / clicks
