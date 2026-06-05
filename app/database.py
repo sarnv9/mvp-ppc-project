@@ -1,13 +1,3 @@
-"""
-database.py
-
-Database configuration module for the Ad-Agent AI backend.
-Defines the SQLAlchemy engine, session factory, ORM model, and file ingestion utility.
-Two database connections are configured:
-  - admin_engine: read/write access for data uploads and table management.
-  - READ_ONLY_URL: used by the SQL agent to query data safely without write privileges.
-"""
-
 from sqlalchemy import create_engine, Column, String, Integer, Float, Date
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -28,16 +18,16 @@ admin_engine = create_engine(ADMIN_URL)
 # Read-only connection URL: passed to the LangChain SQL agent to prevent writes
 READ_ONLY_URL = os.getenv("READ_ONLY_DATABASE_URL")
 
-# Session factory bound to the admin engine for ORM queries in API endpoints
+# Admin DB session for APIs.
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=admin_engine)
 
-# Base class for all SQLAlchemy ORM models
+# Base class for all database models.
 Base = declarative_base()
 
 
 class PerformanceMetric(Base):
     """
-    ORM model representing the performance_metrics table.
+    Model for the performance_metrics table.
 
     Each row corresponds to one campaign aggregated by platform.
     Raw metrics (cost, revenue, clicks, etc.) are stored alongside
@@ -87,29 +77,27 @@ class PerformanceMetric(Base):
 
 def init_db():
     """
-    Creates all tables defined in the ORM metadata if they do not already exist.
-    Should be called once on application startup to ensure the schema is in place.
+    Creates missing database tables. Run once at application startup.
     """
     Base.metadata.create_all(bind=admin_engine)
 
 
 def process_uploaded_file(file_content: bytes, filename: str) -> pd.DataFrame:
     """
-    Parses uploaded file bytes into a pandas DataFrame.
+    Parses uploaded file bytes into a raw pandas DataFrame.
 
-    Supports CSV and Excel formats (.xls, .xlsx). The raw DataFrame is returned
-    without transformation — column renaming and harmonization happen downstream
-    in harmonize_data().
+    Supports CSV and Excel (.xls, .xlsx) formats. Does not transform the data;
+    column renaming and standardization are handled downstream by harmonize_data().
 
     Args:
         file_content: Raw bytes of the uploaded file.
-        filename: Original filename, used to determine the file format.
+        filename: Filename used to detect the format (CSV or Excel).
 
     Returns:
-        pandas DataFrame containing the raw file contents.
+        DataFrame containing the raw file contents.
 
     Raises:
-        ValueError: If the file format is not CSV or Excel.
+        ValueError: If the file format is unsupported.
     """
     if filename.endswith('.csv'):
         return pd.read_csv(io.BytesIO(file_content))

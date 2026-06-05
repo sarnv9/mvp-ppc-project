@@ -11,7 +11,7 @@ import pandas as pd
 
 
 app = FastAPI(
-    title="Ad-Agent AI API",
+    title="PPC Ads AI Advisor",
     description="Scalable backend for strategic campaign optimization (TFM)",
     version="1.0.0"
 )
@@ -22,7 +22,7 @@ def read_root():
     """Health check endpoint. Returns API status."""
     return {
         "status": "ok",
-        "message": "Ad-Agent AI backend is operational and ready."
+        "message": "PPC Ads AI Advisor backend is operational and ready."
     }
 
 
@@ -73,7 +73,6 @@ async def upload_all_data(
         # Run KPI analysis (ROI, ROAS, CVR, CPL, CPC, CTR)
         df_final = run_analysis(df_harmonized)["df"]
 
-        # --- Type coercion ---
         # Ensure numeric columns have correct dtypes before writing to SQL.
         # Pandas may infer object dtype when NULLs are present.
         int_cols = ['conversions', 'impressions', 'clicks']
@@ -90,7 +89,7 @@ async def upload_all_data(
         if 'id' in df_final.columns:
             df_final = df_final.drop(columns=['id'])
 
-        # --- Align columns with SQLAlchemy model ---
+
         # Add any missing model columns as NULL/0 so the schema is always complete.
         model_columns = [c.name for c in PerformanceMetric.__table__.columns]
 
@@ -108,8 +107,7 @@ async def upload_all_data(
         # Create table if it does not exist (first run)
         PerformanceMetric.__table__.create(admin_engine, checkfirst=True)
 
-        # Write to PostgreSQL with explicit dtype mapping to prevent
-        # pandas from inferring TEXT for nullable numeric columns
+        # Write to PostgreSQL with explicit dtype mapping to prevent pandas from inferring TEXT for nullable numeric columns
         df_final.to_sql(
             name='performance_metrics',
             con=admin_engine,

@@ -1,14 +1,10 @@
 import streamlit as st
-from langchain_community.callbacks.streamlit import StreamlitCallbackHandler
 import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
-from src.analytics_engine import run_analysis, upload_to_sql
-from src.prompt_templates import get_sql_agent
-from src.harmonize import harmonize_data
 import requests
-import io
 
+# Base URL of the FastAPI backend
 API_URL = "http://127.0.0.1:8000"
 
 # ─── Page config ────────────────────────────────────────────────────────────────
@@ -20,7 +16,6 @@ st.set_page_config(
 )
 
 # ─── Theme & CSS ────────────────────────────────────────────────────────────────
-
 st.markdown("""
 <style>
     .stApp {
@@ -105,7 +100,7 @@ PLOT_LAYOUT = dict(
         bordercolor="#1A1917",
     ),
 )
- 
+
 C_BLUE   = "#3B7DD8"
 C_CORAL  = "#E05C3A"
 C_GREEN  = "#2D9B6F"
@@ -116,12 +111,12 @@ C_MUTED  = "#302F2D"
 # ─── Header ─────────────────────────────────────────────────────────────────────
  
 st.markdown("<div style='margin-bottom:1.5rem'></div>", unsafe_allow_html=True)
-
 st.title("PPC Ads AI Advisor") # Title of the project
 st.write("Upload your campaign data to get AI-powered strategic recommendations")
 
 
 # ─── Upload section ──────────────────────────────────────────────────────────────
+# Two side-by-side file uploaders for Google Ads and Meta Ads CSV exports.
 col_g, col_m = st.columns(2)
 with col_g:
     uploaded_google = st.file_uploader("Google Ads CSV", type="csv", key="google")
@@ -143,7 +138,7 @@ if uploaded_google is None and uploaded_meta is None:
     """, unsafe_allow_html=True)
     st.stop()
 
-# ─── Logic: If files ARE uploaded, run this ─────────────────────────────────────
+# ─── Upload logic ────────────────────────────────────────────────────────────────
 else:
     current_upload = f"g:{uploaded_google.name if uploaded_google else 'none'}_m:{uploaded_meta.name if uploaded_meta else 'none'}"
 
@@ -172,26 +167,25 @@ else:
                 status.update(label="⚠️ Connection Error", state="error", expanded=True)
                 st.error("Could not connect to the server. Is it running?")
                 st.stop()
-                
+
+# ─── Dashboard: KPI cards + rankings + charts ────────────────────────────────────
 if st.session_state.get('data_ready') and st.session_state.get('last_upload'):
     try:
+        # 1. KPI summary cards
         response = requests.get(f"{API_URL}/analytics/kpis")
         
         if response.status_code == 200:
             api_data = response.json()
             
-            # Map API values to variables
             total_cost   = api_data.get("total_cost", 0)
             avg_roi      = api_data.get("avg_roi", 0)
             n_above_roi  = api_data.get("n_above_roi", 0)
             n_total      = api_data.get("n_total", 0)
             pct_above    = api_data.get("pct_above", 0)
             
-            # Rankings DataFrames
             df_top_3 = pd.DataFrame(api_data["rankings"]["top_3"])
             df_bottom_3 = pd.DataFrame(api_data["rankings"]["bottom_3"])
 
-            # KPI Summary cards Header
             st.divider()
             st.markdown("### Key metrics")
 
@@ -200,10 +194,10 @@ if st.session_state.get('data_ready') and st.session_state.get('last_upload'):
                 arrow = "▲" if positive else "▼"
                 return f'<span style="font-size:12px;color:{color};">{arrow} {text}</span>'
 
-            # Calculate Top Campaign Name safely
             top_camp_name = df_top_3.iloc[0]['campaign'] if not df_top_3.empty else 'N/A'
             top_camp_roi = df_top_3.iloc[0]['roi'] if not df_top_3.empty else 0
-
+            
+            # Four KPI cards rendered as an HTML grid
             cards_html = f"""
             <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:1.5rem;">
                 <div style="background:#fff;border:1px solid #E8E6E1;border-radius:12px;padding:1.25rem 1.5rem;">
@@ -230,7 +224,7 @@ if st.session_state.get('data_ready') and st.session_state.get('last_upload'):
             """
             st.markdown(cards_html, unsafe_allow_html=True)
 
-            # Rankings Tables
+            # Top/bottom campaign ranking tables
             col_top, col_bot = st.columns(2)
             with col_top:
                 st.markdown("**Top 3 by ROI** 🏆")
@@ -246,7 +240,7 @@ if st.session_state.get('data_ready') and st.session_state.get('last_upload'):
                 else:
                     st.info("No data available")
 
-        # 2. Fetch Bar Chart Data
+        # 2. Spend vs Revenue grouped bar chart
         chart_res = requests.get(f"{API_URL}/analytics/charts/spend-vs-revenue")
         if chart_res.status_code == 200:
             st.divider()
@@ -283,13 +277,12 @@ if st.session_state.get('data_ready') and st.session_state.get('last_upload'):
     except Exception as e:
         st.error(f"Error connecting to summary endpoints: {e}")
  
-# ════════════════════════════════════════════════════════════════════════════════
-# 4. ROI by Campaign  +  Budget vs ROI Quadrant  (side by side)
-# ════════════════════════════════════════════════════════════════════════════════
+# ─── ROI by campaign + Strategic quadrant (side by side) ─────────────────────────
 st.divider()
 col_roi, col_quad = st.columns([1, 1], gap="large")
 
 try:
+    # 3. Horizontal bar chart — ROI per campaign, color-coded vs average
     res_roi = requests.get(f"{API_URL}/analytics/charts/roi-by-campaign")
     if res_roi.status_code == 200:
         df_roi = pd.DataFrame(res_roi.json())
@@ -313,7 +306,7 @@ try:
             st.plotly_chart(fig_roi, width='stretch')
             st.caption("🟢 Above average ROI  ·  🔴 Below average ROI")
 
-    # --- FETCH QUADRANT DATA ---
+    # 4. Scatter plot — Budget vs ROI strategic quadrants
     res_quad = requests.get(f"{API_URL}/analytics/charts/quadrants")
     if res_quad.status_code == 200:
         df_quadrant = pd.DataFrame(res_quad.json())
@@ -340,11 +333,17 @@ try:
 except Exception as e:
     st.error(f"Error loading charts: {e}")
 
-# ════════════════════════════════════════════════════════════════════════════════
-# ASK THE DASHBOARD 
+# ─── Floating AI chat dialog ──────────────────────────────────────────────────────
 
 @st.dialog("Chat with Marketing Agent")
 def show_chat():
+    """
+    Renders the AI chat dialog powered by the LangChain SQL agent.
+
+    Displays the full conversation history with expandable reasoning logs
+    for each assistant response. Submits new queries to the /agent/chat
+    endpoint and streams the response back into the dialog.
+    """
     st.info("Find insights across your campaigns. Ask about performance, comparisons, or get strategic advice.", icon="💡")
     
     if "messages" not in st.session_state:
@@ -352,7 +351,7 @@ def show_chat():
         
     chat_container = st.container()
 
-    # Mostrar historial
+    # Render conversation history
     with chat_container:
         for msg in st.session_state.messages:
             with st.chat_message(msg["role"]):
@@ -361,7 +360,7 @@ def show_chat():
                         st.markdown(msg["thought"])
                 st.write(msg["content"])
 
-    # Input del usuario
+    # Handle new user input
     if prompt := st.chat_input("What is the ROI of Google Ads?"):
         st.session_state.messages.append({"role": "user", "content": prompt})
         with chat_container:
@@ -376,13 +375,13 @@ def show_chat():
                         res = response.json()
                         
                         if response.status_code == 200:
-
+                            # Display reasoning steps inside the status box
                             thought = res.get("thought_process", "")
                             if thought:
                                 st.markdown(thought)
                             
                             status.update(label="Analysis Complete", state="complete", expanded=False)
-                            
+                            # Display final answer below the reasoning box
                             answer = res.get("response", "No response")
                             st.markdown(answer)
                             
@@ -399,5 +398,6 @@ def show_chat():
                         status.update(label="Connection Error", state="error")
                         st.error(f"Could not connect to backend: {e}")
 
+# Floating button that opens the chat dialog
 if st.button("💬", type="primary"):
     show_chat()

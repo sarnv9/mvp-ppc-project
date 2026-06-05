@@ -5,29 +5,29 @@ This repository contains the source code for the PPC Ads AI Advisor, an Agentic 
 This tool automates the analysis of Google and Meta Ads campaigns. It utilizes a Text-to-SQL engine to interact with a PostgreSQL database, providing deterministic visualizations and high-level strategic recommendations.
 
 ## Tech Stack
-Language: Python 3.14
-
-Orchestration: LangChain (ReAct Agent)
-
-LLM Backend: GPT-4o mini (via OpenAI API)
-
-Database: PostgreSQL (with SQLAlchemy ORM)
-
-Frontend: Streamlit & Plotly
+* **Language:** Python 3.11+
+* **Orchestration:** LangChain (ReAct Agent Executor)
+* **LLM Backend:** GPT-4o mini (via OpenAI API)
+* **Database:** PostgreSQL (with SQLAlchemy ORM)
+* **API Layer:** FastAPI
+* **Frontend:** Streamlit & Plotly
 
 ## Project Structure
 ```text
-├── api
-│   ├── database/            # SQLAlchemy models and DB connection
+├── app/
+│   ├── api.py               # FastAPI backend endpoints
+│   ├── schemas.py           # Pydantic data models for API validation
+│   └── database/            # Database connection and engine setup
 ├── src/
-│   ├── prompt_templates/    # ReAct logic and custom prompts
-│   ├── database/            # SQLAlchemy models and DB connection
-│   ├── harmonize/           # Data harmonization and cleaning scripts         
-├── data/                    # Synthetic marketing datasets (CSV)
-├── .env.example             # Template for environment variables
-├── requirements.txt         # Project dependencies
-├── streamlit_app            # Streamlit interface and visualizations
+│   ├── prompt_templates.py  # ReAct agent logic and tool configuration
+│   └── harmonize/           # Data harmonization, types casting (Float/Int), and ETL scripts
+├── data/                    # Marketing datasets (CSV)
+├── .env.example             # Template for environment variables (DB URLs, API Keys)
+├── requirements.txt         # Project dependencies (pip freeze)
+├── streamlit_app.py         # Streamlit interface and dynamic chat UI
+└── README.md                # Project documentation
 ```
+
 ## Setup and Installation
 Prerequisites
 Python 3.11+
@@ -36,7 +36,7 @@ PostgreSQL instance
 
 OpenAI API Key
 
-Installation
+## Installation
 Clone the repository:
 
 git clone https://github.com/sarnv9/mvp-ppc-project.git
@@ -50,7 +50,11 @@ pip install -r requirements.txt
 
 
 ## Usage
-To launch the dashboard and the AI Agent:
+Launch the Backend (FastAPI)
+
+uvicorn app.api:app --reload
+
+Launch the Frontend (Streamlit)
 
 streamlit run main.py
 
