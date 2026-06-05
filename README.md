@@ -37,22 +37,21 @@ PostgreSQL instance
 OpenAI API Key
 
 ## Installation
-Clone the repository:  
+# Clone the repository:  
 
 git clone https://github.com/sarnv9/mvp-ppc-project.git  
 
-Create a virtual environment:  
+# Create a virtual environment:  
 
 python -m venv venv  
 
 source venv/bin/activate  # On Windows: venv\Scripts\activate  
 
-
-Install dependencies:  
+# Install dependencies:  
 
 pip install -r requirements.txt  
 
-Environment Variables Configuration:  
+# Environment Variables Configuration:  
 
 Duplicate the .env.example file, rename it to .env, and populate it with your local credentials:  
 
