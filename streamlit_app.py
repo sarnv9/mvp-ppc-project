@@ -3,9 +3,10 @@ import pandas as pd
 import plotly.graph_objects as go
 import plotly.express as px
 import requests
+import os
 
 # Base URL of the FastAPI backend
-API_URL = "http://127.0.0.1:8000"
+API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
 
 # ─── Page config ────────────────────────────────────────────────────────────────
 st.set_page_config(
