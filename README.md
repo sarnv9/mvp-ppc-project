@@ -48,6 +48,12 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 Install dependencies:
 pip install -r requirements.txt
 
+Environment Variables Configuration:
+Duplicate the .env.example file, rename it to .env, and populate it with your local credentials:
+
+DATABASE_URL=postgresql://your_user:your_password@localhost:5432/your_db
+   OPENAI_API_KEY=your_openai_api_key_here
+   API_URL=[http://127.0.0.1:8000](http://127.0.0.1:8000)
 
 ## Usage
 Launch the Backend (FastAPI)
