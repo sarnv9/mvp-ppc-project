@@ -45,7 +45,9 @@ git clone https://github.com/sarnv9/mvp-ppc-project.git
 
 python -m venv venv  
 
-source venv/bin/activate  # On Windows: venv\Scripts\activate  
+source venv/bin/activate  
+
+On Windows: venv\Scripts\activate  
 
 ### Install dependencies:  
 
