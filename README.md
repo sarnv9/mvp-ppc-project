@@ -41,6 +41,9 @@ OpenAI API Key
 
 git clone https://github.com/sarnv9/mvp-ppc-project.git  
 
+### Navigate to the project folder:
+cd mvp-ppc-project
+
 ### Create a virtual environment:  
 
 python -m venv venv  
