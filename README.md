@@ -37,24 +37,32 @@ PostgreSQL instance
 OpenAI API Key
 
 ## Installation
-Clone the repository:
+Clone the repository:  
 
-git clone https://github.com/sarnv9/mvp-ppc-project.git
+git clone https://github.com/sarnv9/mvp-ppc-project.git  
 
-Create a virtual environment:
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+Create a virtual environment:  
 
-Install dependencies:
-pip install -r requirements.txt
+python -m venv venv  
 
-Environment Variables Configuration:
-Duplicate the .env.example file, rename it to .env, and populate it with your local credentials:
+source venv/bin/activate  # On Windows: venv\Scripts\activate  
 
-ADMIN_DATABASE_URL=postgresql://your_postgres_user:your_postgres_password@localhost:5432/your_database_name
-READ_ONLY_DATABASE_URL=postgresql://your_readonly_user:your_readonly_password@localhost:5432/your_database_name
-OPENAI_API_KEY=your_openai_api_key_here
-API_URL=http://127.0.0.1:8000
+
+Install dependencies:  
+
+pip install -r requirements.txt  
+
+Environment Variables Configuration:  
+
+Duplicate the .env.example file, rename it to .env, and populate it with your local credentials:  
+
+ADMIN_DATABASE_URL=postgresql://your_postgres_user:your_postgres_password@localhost:5432/your_database_name  
+
+READ_ONLY_DATABASE_URL=postgresql://your_readonly_user:your_readonly_password@localhost:5432/your_database_name  
+
+OPENAI_API_KEY=your_openai_api_key_here  
+
+API_URL=http://127.0.0.1:8000  
 
 ## Usage
 Launch the Backend (FastAPI)
