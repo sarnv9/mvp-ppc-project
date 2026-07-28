@@ -6,6 +6,11 @@ import requests
 import os
 
 # Base URL of the FastAPI backend
+
+for key, value in st.secrets.items():
+    os.environ[key] = str(value)
+
+
 API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
 
 # ─── Page config ────────────────────────────────────────────────────────────────
