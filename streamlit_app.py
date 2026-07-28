@@ -7,10 +7,6 @@ import os
 
 # Base URL of the FastAPI backend
 
-for key, value in st.secrets.items():
-    os.environ[key] = str(value)
-
-
 API_URL = os.getenv("API_URL", "http://127.0.0.1:8000")
 
 # ─── Page config ────────────────────────────────────────────────────────────────
@@ -171,7 +167,7 @@ else:
                     st.stop()
             except Exception as e:
                 status.update(label="⚠️ Connection Error", state="error", expanded=True)
-                st.error(f"Could not connect to the server. Real error: {repr(e)}")
+                st.error(f"Could not connect to the server")
                 st.stop()
 
 # ─── Dashboard: KPI cards + rankings + charts ────────────────────────────────────
