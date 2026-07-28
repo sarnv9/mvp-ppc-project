@@ -167,7 +167,7 @@ else:
                     st.stop()
             except Exception as e:
                 status.update(label="⚠️ Connection Error", state="error", expanded=True)
-                st.error(f"Could not connect to the server. Real error: {repr(e)}")
+                st.error(f"Could not connect to the server. Please try again in a moment.")
                 st.stop()
 
 # ─── Dashboard: KPI cards + rankings + charts ────────────────────────────────────
